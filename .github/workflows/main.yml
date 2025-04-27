@@ -1,26 +1,17 @@
-name: C Program Build and Run on Windows
+name: Simple Push Workflow
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build:
-    runs-on: windows-latest
+  simple-job:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Developer Command Prompt
-      uses: ilammy/msvc-dev-cmd@v1
-
-    - name: Compile C Program
-      run: cl /EHsc main.c
-
-    - name: Run C Program
-      run: main.exe
+    - name: Echo Hello
+      run: echo "Hello! Code was pushed successfully."
