@@ -1,0 +1,26 @@
+name: C Program Build and Run on Windows
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Developer Command Prompt
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Compile C Program
+      run: cl /EHsc main.c
+
+    - name: Run C Program
+      run: main.exe
